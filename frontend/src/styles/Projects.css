@@ -1,0 +1,451 @@
+/* ========================= */
+/* PROJECTS SECTION */
+/* ========================= */
+
+.projects-wrapper {
+  background: linear-gradient(
+    150deg,
+    #f1f9fb 0%,
+    #d5f2f8 50%,
+    #f1f9fb 100%
+  );
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.projects-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 32px;
+  position: relative;
+  z-index: 2;
+}
+
+.projects-header {
+  text-align: center;
+  margin-bottom: 60px;
+  animation: slideUp 0.7s ease both;
+}
+
+/* ========================= */
+/* GRID */
+/* ========================= */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  align-items: start; /* FIX: prevent cards from stretching to match tallest sibling */
+}
+
+/* ========================= */
+/* CARD BASE */
+/* ========================= */
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  animation: scaleIn 0.6s ease both;
+  /* REMOVED: fixed height: 300px — let content define height naturally */
+}
+
+.project-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow:
+    0 25px 60px rgba(2, 79, 85, 0.18),
+    0 0 0 1px rgba(60, 148, 158, 0.2);
+}
+
+/* ========================= */
+/* THUMBNAIL */
+/* ========================= */
+
+.pc-thumb {
+  height: 120px; /* FIX: slightly taller so icon has breathing room */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0; /* FIX: prevent thumb from collapsing in flex column */
+}
+
+.pc-thumb::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+.pc-thumb-icon {
+  font-size: 4.5rem;
+  z-index: 2;
+  animation: floatIcon 3s ease-in-out infinite;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.12));
+}
+
+@keyframes floatIcon {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* ========================= */
+/* BODY */
+/* ========================= */
+
+.pc-body {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* FIX: body takes all remaining space so buttons stay at bottom */
+}
+
+.pc-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #024f55;
+  line-height: 1.3;
+  margin-bottom: 10px;
+  font-family: "Outfit", sans-serif;
+}
+
+.pc-sub {
+  font-size: 0.85rem;
+  color: #3c949e;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+.pc-desc-sm {
+  font-size: 0.94rem;
+  line-height: 1.8;
+  color: #4c666b;
+  flex: 1; /* FIX: description expands to fill space, pushing badges+buttons down */
+}
+
+/* ========================= */
+/* TECH BADGES */
+/* ========================= */
+
+.pc-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.tech-badge {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #d5f2f8, #9bd8db);
+  color: #024f55;
+  font-size: 0.74rem;
+  font-weight: 700;
+  transition: 0.3s ease;
+}
+
+.tech-badge:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #9bd8db, #3c949e);
+  color: white;
+}
+
+/* ========================= */
+/* BUTTONS */
+/* ========================= */
+
+.pc-links {
+  display: flex;
+  gap: 14px;
+  margin-top: 24px; /* FIX: reduced from 30px so it sits tighter under badges */
+  align-items: center; /* FIX: vertically align both buttons on same baseline */
+}
+
+.link-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border-radius: 14px;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  background: rgba(60, 148, 158, 0.08);
+  color: #024f55;
+  font-size: 0.84rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  white-space: nowrap; /* FIX: prevent button text from wrapping */
+  flex-shrink: 0;      /* FIX: buttons don't shrink below their natural size */
+}
+
+.link-btn:hover {
+  background: #024f55;
+  color: white;
+  transform: translateY(-3px);
+}
+
+.details-btn {
+  background: linear-gradient(135deg, #3c949e, #024f55);
+  color: white;
+}
+
+.details-btn:hover {
+  opacity: 0.9;
+}
+
+/* ========================= */
+/* GLOW EFFECT */
+/* ========================= */
+
+.pc-hover-glow {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  background: rgba(155, 216, 219, 0.18);
+  border-radius: 50%;
+  top: -100px;
+  right: -100px;
+  filter: blur(80px);
+  opacity: 0;
+  transition: 0.5s ease;
+  pointer-events: none;
+}
+
+.project-card:hover .pc-hover-glow {
+  opacity: 1;
+}
+
+/* ========================= */
+/* MODAL */
+/* ========================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 79, 85, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 650px;
+  overflow: hidden;
+  border-radius: 28px;
+  background: white;
+  animation: scaleIn 0.35s ease;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  color: #024f55;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease;
+  z-index: 5;
+}
+
+.modal-close:hover {
+  transform: rotate(90deg);
+  background: white;
+}
+
+.modal-header {
+  padding: 40px 32px 30px;
+  color: white;
+}
+
+.modal-icon {
+  font-size: 2.8rem;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.modal-header h2 {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  font-family: "Outfit", sans-serif;
+}
+
+.modal-header p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.modal-body {
+  padding: 30px 32px 34px;
+}
+
+.modal-desc {
+  font-size: 0.96rem;
+  line-height: 1.8;
+  color: #4c666b;
+  margin-bottom: 24px;
+}
+
+.modal-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center; /* FIX: align modal action buttons on same baseline */
+}
+
+/* ========================= */
+/* ANIMATIONS */
+/* ========================= */
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* ========================= */
+/* RESPONSIVE */
+/* ========================= */
+
+@media (max-width: 992px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-container {
+    padding: 60px 20px;
+  }
+
+  .pc-thumb {
+    height: 160px; /* FIX: taller thumb on mobile for better visual weight */
+  }
+
+  .pc-thumb-icon {
+    font-size: 3.5rem;
+  }
+
+  .pc-body {
+    padding: 22px;
+  }
+
+  .pc-title {
+    font-size: 1.3rem;
+  }
+
+  .pc-links {
+    flex-direction: column;
+    align-items: stretch; /* FIX: stretch buttons full width in column layout */
+  }
+
+  .link-btn {
+    width: 100%;
+    white-space: normal; /* FIX: allow wrapping when full width on small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-grid {
+    gap: 22px;
+  }
+
+  .pc-title {
+    font-size: 1.15rem;
+  }
+
+  .pc-desc-sm {
+    font-size: 0.88rem;
+  }
+
+  .tech-badge {
+    font-size: 0.68rem;
+    padding: 7px 12px;
+  }
+}
+.sections-subtitle {
+  font-size:20px;
+  color: var(--text-soft);
+  
+  text-align: center;
+  line-height: 1.7;
+}

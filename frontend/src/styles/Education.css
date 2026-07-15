@@ -1,0 +1,195 @@
+.edu-wrapper {
+  background: linear-gradient(160deg, #D5F2F8 0%, #F1F9FB 50%, #D5F2F8 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.edu-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 32px 80px;
+  position: relative;
+  z-index: 2;
+}
+
+.edu-header {
+  text-align: center;
+  margin-bottom: 60px;
+  animation: slideUp 0.7s ease both;
+}
+.edu-header .section-subtitle { margin: 0 auto; }
+
+/* ─── TIMELINE ─── */
+.edu-timeline {
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.edu-timeline-line {
+  position: absolute;
+  left: 34px;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent-light), var(--accent-main), var(--accent-light));
+  border-radius: 2px;
+}
+
+.edu-item {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  animation: slideRight 0.7s ease both;
+  position: relative;
+}
+
+.edu-node {
+  flex-shrink: 0;
+  width: 70px; height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  border: 2px solid;
+  box-shadow: 0 0 20px rgba(60,148,158,0.25);
+  z-index: 1;
+  animation: glowPulse 3s ease-in-out infinite;
+  background: white;
+}
+
+.edu-card {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.edu-card:hover {
+  transform: translateX(8px) translateY(-4px);
+  box-shadow: 0 20px 50px rgba(2,79,85,0.13);
+}
+
+.edu-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px 14px;
+  border-bottom: 1px solid rgba(156,216,219,0.3);
+}
+
+.edu-period-badge {
+  padding: 5px 16px;
+  background: linear-gradient(135deg, #D5F2F8, #9BD8DB);
+  border-radius: 99px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent-dark);
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: 0.3px;
+}
+
+.edu-status {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-soft);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.edu-status.ongoing { color: #16a34a; }
+.edu-status.done { color: var(--accent-main); }
+
+.edu-card-body {
+  padding: 20px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.edu-degree {
+  font-size: 1.15rem;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.edu-inst {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent-main);
+}
+
+.edu-desc {
+  font-size: 0.88rem;
+  color: var(--text-soft);
+  line-height: 1.7;
+}
+
+.edu-highlights { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+
+.edu-chip {
+  padding: 4px 14px;
+  background: rgba(155,216,219,0.2);
+  border: 1px solid rgba(60,148,158,0.2);
+  border-radius: 99px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent-dark);
+  font-family: 'Inter', sans-serif;
+}
+
+.edu-card-accent {
+  position: absolute;
+  top: 0; right: 0;
+  width: 120px; height: 120px;
+  border-radius: 0 0 0 100%;
+  pointer-events: none;
+}
+
+/* ─── FUTURE CARD ─── */
+.future-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 28px 32px;
+  animation: fadeInUp 0.8s ease 0.5s both;
+  background: linear-gradient(135deg, rgba(2,79,85,0.06), rgba(60,148,158,0.08));
+}
+
+.future-icon { font-size: 2.4rem; flex-shrink: 0; }
+
+.future-text h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+}
+
+.future-text p {
+  font-size: 0.88rem;
+  color: var(--text-soft);
+  line-height: 1.65;
+}
+
+.future-badge {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: 1.6rem;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 900;
+  background: var(--grad-dark);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  .edu-timeline-line { left: 28px; }
+  .edu-node { width: 58px; height: 58px; }
+  .edu-card-top { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .future-card { flex-direction: column; text-align: center; }
+  .future-badge { margin-left: 0; }
+}
