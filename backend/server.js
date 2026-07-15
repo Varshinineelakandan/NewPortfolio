@@ -16,18 +16,12 @@ if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
 
 // ✅ Test transporter on startup so you know immediately if credentials are wrong
 const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 587,
-  secure: false,
+  service: "gmail",
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
-  tls: {
-    rejectUnauthorized: false,
-  },
 });
-
 transporter.verify((error, success) => {
   if (error) {
     console.error('❌ SMTP connection failed:', error.message);
