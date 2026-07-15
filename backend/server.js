@@ -2,25 +2,11 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
 require('dotenv').config();
+const path = require("path");
 
 const app = express();
 
-const allowedOrigins = [
-  "http://localhost:3000",
-  "https://new-portfolio-phi-roan.vercel.app",
-];
-
-app.use(cors({
-  origin(origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  methods: ["GET", "POST", "OPTIONS"],
-  allowedHeaders: ["Content-Type"],
-}));
+app.use(cors());
 app.use(express.json());
 
 if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
@@ -79,6 +65,11 @@ app.post('/api/contact', async (req, res) => {
     console.error('❌ Send failed:', err.message);
     res.status(500).json({ error: 'Failed to send message.' });
   }
+});
+app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
 });
 
 const PORT = process.env.PORT || 5000;
